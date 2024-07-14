@@ -91,10 +91,10 @@
                             method: 'POST',
                             contentType: 'application/json',
                             data: JSON.stringify({ productId: productId, quantity: quantity }),
-                            success: function(response) {
+                            success: function() {
                                 displayMessage('Product added to cart!', 'success');
                             },
-                            error: function(error) {
+                            error: function() {
                                 displayMessage('Error adding product to cart.', 'danger');
                             }
                         });
@@ -118,7 +118,7 @@
             messageContainer.show();
             setTimeout(function() {
                 messageContainer.fadeOut();
-            }, 3000); // Hide message after 3 seconds
+            }, 1500); // Hide message after 3 seconds
         }
 
         // Function to update pagination controls

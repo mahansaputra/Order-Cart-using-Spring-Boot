@@ -24,22 +24,21 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/api/register/**").permitAll();
-//                    registry.requestMatchers("/api/orders/**").hasRole("ADMIN");
-//                    registry.requestMatchers("/cart").hasRole("USER");
-//                    registry.requestMatchers("/products").hasRole("USER");
-                    registry.anyRequest().authenticated();
-                })
-                .formLogin(httpSecurityFormLoginConfigurer -> {
-                    httpSecurityFormLoginConfigurer
-                            .loginPage("/login")
-                            .successHandler(new AuthenticationSuccessHandler())
-                            .permitAll();
-                })
+                .authorizeHttpRequests(registry -> registry
+                                .requestMatchers("/api/register/**").permitAll()
+//                                .requestMatchers("/api/orders/**").hasRole("ADMIN")
+//                                .requestMatchers("/cart").hasRole("USER")
+//                                .requestMatchers("/products").hasRole("USER")
+                                .anyRequest().authenticated()
+                )
+                .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
+                        .loginPage("/login")
+                        .successHandler(new AuthenticationSuccessHandler())
+                        .permitAll()
+                )
                 .logout(logoutConfigurer -> logoutConfigurer
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login") // You can change this to a different URL if needed
+                        .logoutSuccessUrl("/login")
                         .permitAll()
                 )
                 .build();
