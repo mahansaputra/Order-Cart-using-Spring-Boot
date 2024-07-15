@@ -13,11 +13,11 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @RequestMapping("/api")
 public class UserController {
-
     private final UserServiceImpl userService;
     private final PasswordEncoder passwordEncoder;
 
-    public UserController(@Autowired UserServiceImpl userService, PasswordEncoder passwordEncoder) {
+    @Autowired
+    public UserController(UserServiceImpl userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
     }
