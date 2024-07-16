@@ -29,7 +29,7 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> registry
-                                .requestMatchers("/api/register/**").permitAll()
+                                .requestMatchers("/api/user/register", "/register").permitAll()
 //                                .requestMatchers("/api/orders/**").hasRole("ADMIN")
 //                                .requestMatchers("/cart").hasRole("USER")
 //                                .requestMatchers("/products").hasRole("USER")
