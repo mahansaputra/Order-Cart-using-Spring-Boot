@@ -14,9 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
-
     private final ProductService productService;
-
     private final Cart cart;
 
     @Autowired
