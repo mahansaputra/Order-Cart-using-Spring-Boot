@@ -9,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Service
 public class ProductServiceImpl implements ProductService{
     private final ProductRepository productRepository;
@@ -20,6 +22,10 @@ public class ProductServiceImpl implements ProductService{
 
     public Product getProductById(long id) {
         return productRepository.findById(id).orElse(null);
+    }
+
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
     }
 
     public Page<Product> getProducts(
