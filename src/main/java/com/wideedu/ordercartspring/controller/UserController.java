@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/user")
 public class UserController {
     private final UserServiceImpl userService;
     private final PasswordEncoder passwordEncoder;
@@ -22,7 +22,7 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @PostMapping("/register/user")
+    @PostMapping("/register")
     public User createUser(@RequestBody User user) {
         userService.findByUsername(user.getUsername());
         if (userService.findByUsername(user.getUsername()) != null) {
@@ -32,7 +32,7 @@ public class UserController {
         return userService.saveUser(user);
     }
 
-    @GetMapping("/user-details")
+    @GetMapping("/details")
     public User getUserDetails() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String username = auth.getName();

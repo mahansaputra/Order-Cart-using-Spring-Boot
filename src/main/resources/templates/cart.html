@@ -87,7 +87,7 @@
 
             // Fetch customer details and update HTML
             $.ajax({
-                url: '/api/user-details', // Endpoint to fetch user details
+                url: '/api/user/details', // Endpoint to fetch user details
                 method: 'GET',
                 success: function(userDetails) {
                     $('#customer-name').text(userDetails.firstName+" "+userDetails.lastName); // Update with actual field from UserDetails
