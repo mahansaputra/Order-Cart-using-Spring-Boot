@@ -30,9 +30,6 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> registry
                                 .requestMatchers("/api/user/register", "/register").permitAll()
-//                                .requestMatchers("/api/orders/**").hasRole("ADMIN")
-//                                .requestMatchers("/cart").hasRole("USER")
-//                                .requestMatchers("/products").hasRole("USER")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
@@ -48,21 +45,6 @@ public class SecurityConfig {
                 .build();
 
     }
-
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        UserDetails normalUser = User.builder()
-//                .username("user")
-//                .password("$2a$12$APt.GqpQBEjeIYsRMhSQlehPV9JwXW5CzmvgXbTcw0ixkXC8tzViS")
-//                .roles("USER")
-//                .build();
-//        UserDetails adminUser = User.builder()
-//                .username("admin")
-//                .password("$2a$12$APt.GqpQBEjeIYsRMhSQlehPV9JwXW5CzmvgXbTcw0ixkXC8tzViS")
-//                .roles("ADMIN", "USER")
-//                .build();
-//        return new InMemoryUserDetailsManager(normalUser, adminUser);
-//    }
 
     @Bean
     public UserDetailsService userDetailsService() {

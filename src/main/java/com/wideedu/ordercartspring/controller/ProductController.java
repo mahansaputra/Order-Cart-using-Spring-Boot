@@ -37,8 +37,7 @@ public class ProductController {
     public Page<Product> getProducts(
             @RequestParam int page,
             @RequestParam int size) {
-        int realPage = page - 1;
-        return productService.getProducts(realPage, size);
+        return productService.getProducts(page, size);
     }
 
     @PostMapping
