@@ -1,9 +1,11 @@
 package com.wideedu.ordercartspring.controller;
 
-import com.wideedu.ordercartspring.model.*;
+import com.wideedu.ordercartspring.model.Cart;
+import com.wideedu.ordercartspring.model.Order;
+import com.wideedu.ordercartspring.model.OrderItem;
+import com.wideedu.ordercartspring.model.User;
 import com.wideedu.ordercartspring.service.OrderService;
 import com.wideedu.ordercartspring.service.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +20,6 @@ public class CartController {
     private final OrderService orderService;
     private final UserServiceImpl userService;
 
-    @Autowired
     public CartController(OrderService orderService, Cart cart, UserServiceImpl userService) {
         this.orderService = orderService;
         this.cart = cart;

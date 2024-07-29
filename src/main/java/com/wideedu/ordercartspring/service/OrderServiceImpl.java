@@ -3,7 +3,6 @@ package com.wideedu.ordercartspring.service;
 import com.wideedu.ordercartspring.model.Order;
 import com.wideedu.ordercartspring.model.OrderItem;
 import com.wideedu.ordercartspring.repository.OrderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,7 +12,6 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService{
     private final OrderRepository orderRepository;
 
-    @Autowired
     public OrderServiceImpl(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }

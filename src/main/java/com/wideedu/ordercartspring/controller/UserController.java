@@ -2,7 +2,6 @@ package com.wideedu.ordercartspring.controller;
 
 import com.wideedu.ordercartspring.model.User;
 import com.wideedu.ordercartspring.service.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +15,6 @@ public class UserController {
     private final UserServiceImpl userService;
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
     public UserController(UserServiceImpl userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;

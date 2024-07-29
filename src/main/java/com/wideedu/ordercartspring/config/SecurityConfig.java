@@ -1,6 +1,5 @@
 package com.wideedu.ordercartspring.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -19,7 +18,6 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     private final UserDetailsService userDetailsService;
 
-    @Autowired
     public SecurityConfig(@Lazy UserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }

@@ -2,7 +2,6 @@ package com.wideedu.ordercartspring.service;
 
 import com.wideedu.ordercartspring.model.Product;
 import com.wideedu.ordercartspring.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +14,6 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService{
     private final ProductRepository productRepository;
 
-    @Autowired
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }

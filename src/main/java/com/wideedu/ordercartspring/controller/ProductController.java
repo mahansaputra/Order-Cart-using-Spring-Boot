@@ -5,7 +5,6 @@ import com.wideedu.ordercartspring.model.Cart;
 import com.wideedu.ordercartspring.model.OrderItem;
 import com.wideedu.ordercartspring.model.Product;
 import com.wideedu.ordercartspring.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,6 @@ public class ProductController {
     private final ProductService productService;
     private final Cart cart;
 
-    @Autowired
     public ProductController(ProductService productService, Cart cart) {
         this.productService = productService;
         this.cart = cart;
