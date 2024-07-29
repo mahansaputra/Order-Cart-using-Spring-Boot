@@ -1,0 +1,33 @@
+name: ordercart
+services:
+  postgres:
+    image: postgres
+    container_name: postgres_ms
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5434:5432'
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+
+  # pgadmin:
+  #   image: dpage/pgadmin4
+  #   container_name: pgadmin4_container_ms
+  #   restart: always
+  #   ports:
+  #     - "8888:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
+  #     PGADMIN_DEFAULT_PASSWORD: strong-password
+  #   volumes:
+  #     - pgadmin-data:/var/lib/pgadmin
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+  local_pgdata:
+  # pgadmin-data:
