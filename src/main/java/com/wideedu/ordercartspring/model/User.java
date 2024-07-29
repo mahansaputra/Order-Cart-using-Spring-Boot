@@ -3,6 +3,7 @@ package com.wideedu.ordercartspring.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,11 +14,6 @@ public class User {
     private String firstName;
     private String lastName;
     private String address;
-
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     public User() {
 
