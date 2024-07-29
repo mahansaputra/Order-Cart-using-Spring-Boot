@@ -8,21 +8,32 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - '5434:5432'
+      - '5432:5432'
+    networks:
+      - postgres
     volumes:
       - local_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
-  # pgadmin:
-  #   image: dpage/pgadmin4
-  #   container_name: pgadmin4_container_ms
-  #   restart: always
-  #   ports:
-  #     - "8888:80"
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
-  #     PGADMIN_DEFAULT_PASSWORD: strong-password
-  #   volumes:
-  #     - pgadmin-data:/var/lib/pgadmin
+  ordercart:
+    image: mahansa/order-cart:latest
+    container_name: ordercart
+    ports:
+      - 8080:8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - postgres
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ordercart
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
 
 networks:
   postgres:
@@ -30,4 +41,3 @@ networks:
 
 volumes:
   local_pgdata:
-  # pgadmin-data:
